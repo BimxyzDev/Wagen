@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,45 +11,22 @@
       text-align: center;
       padding: 20px;
     }
-
     h1 {
       color: cyan;
       text-shadow: 0 0 10px cyan;
       margin-bottom: 10px;
     }
-
     p {
       color: #ccc;
       font-size: 14px;
       margin-bottom: 30px;
     }
-
-    .country-btn {
-      background: transparent;
-      border: 2px solid cyan;
-      color: cyan;
-      padding: 10px 20px;
-      margin: 5px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 10px cyan;
-    }
-
-    .country-btn:hover {
-      background-color: cyan;
-      color: black;
-      box-shadow: 0 0 20px cyan;
-    }
-
     .toggle-list {
       margin-top: 10px;
       display: block;
       flex-wrap: wrap;
       justify-content: center;
     }
-
     .toggle-list button {
       display: inline-block;
       margin: 6px;
@@ -64,12 +40,10 @@
       transition: 0.3s;
       box-shadow: 0 0 5px cyan;
     }
-
     .toggle-list button:hover {
       background: cyan;
       color: black;
     }
-
     .next-btn {
       margin-top: 30px;
       padding: 12px 25px;
@@ -82,7 +56,6 @@
       font-size: 16px;
       box-shadow: 0 0 12px cyan;
     }
-
     .next-btn:hover {
       background: #00ffff;
       box-shadow: 0 0 25px cyan;
@@ -91,67 +64,72 @@
 </head>
 <body>
   <h1>Random WA Chat Tool</h1>
-  <p>Pilih negara dulu, lalu klik <b>Lanjut</b> untuk acak nomor</p>
-
-  <div class="toggle-list" id="countryList">
-    <!-- 50 negara + panjang digit disesuaikan -->
-    <button onclick="selectCountry('+62', 10)">🇮🇩 Indonesia (+62)</button>
-    <button onclick="selectCountry('+1', 10)">🇺🇸 USA (+1)</button>
-    <button onclick="selectCountry('+91', 10)">🇮🇳 India (+91)</button>
-    <button onclick="selectCountry('+81', 9)">🇯🇵 Jepang (+81)</button>
-    <button onclick="selectCountry('+44', 10)">🇬🇧 UK (+44)</button>
-    <button onclick="selectCountry('+55', 10)">🇧🇷 Brazil (+55)</button>
-    <button onclick="selectCountry('+7', 10)">🇷🇺 Rusia (+7)</button>
-    <button onclick="selectCountry('+33', 9)">🇫🇷 Prancis (+33)</button>
-    <button onclick="selectCountry('+49', 10)">🇩🇪 Jerman (+49)</button>
-    <button onclick="selectCountry('+86', 11)">🇨🇳 China (+86)</button>
-    <button onclick="selectCountry('+82', 10)">🇰🇷 Korea Selatan (+82)</button>
-    <button onclick="selectCountry('+60', 9)">🇲🇾 Malaysia (+60)</button>
-    <button onclick="selectCountry('+66', 9)">🇹🇭 Thailand (+66)</button>
-    <button onclick="selectCountry('+84', 9)">🇻🇳 Vietnam (+84)</button>
-    <button onclick="selectCountry('+61', 9)">🇦🇺 Australia (+61)</button>
-    <button onclick="selectCountry('+1', 10)">🇨🇦 Kanada (+1)</button>
-    <button onclick="selectCountry('+65', 8)">🇸🇬 Singapura (+65)</button>
-    <button onclick="selectCountry('+966', 9)">🇸🇦 Arab Saudi (+966)</button>
-    <button onclick="selectCountry('+90', 10)">🇹🇷 Turki (+90)</button>
-    <button onclick="selectCountry('+92', 10)">🇵🇰 Pakistan (+92)</button>
-    <button onclick="selectCountry('+880', 10)">🇧🇩 Bangladesh (+880)</button>
-    <button onclick="selectCountry('+234', 10)">🇳🇬 Nigeria (+234)</button>
-    <button onclick="selectCountry('+27', 9)">🇿🇦 Afrika Selatan (+27)</button>
-    <button onclick="selectCountry('+52', 10)">🇲🇽 Meksiko (+52)</button>
-    <button onclick="selectCountry('+39', 9)">🇮🇹 Italia (+39)</button>
-    <button onclick="selectCountry('+34', 9)">🇪🇸 Spanyol (+34)</button>
-    <button onclick="selectCountry('+63', 10)">🇵🇭 Filipina (+63)</button>
-    <button onclick="selectCountry('+971', 9)">🇦🇪 UEA (+971)</button>
-    <button onclick="selectCountry('+98', 10)">🇮🇷 Iran (+98)</button>
-    <button onclick="selectCountry('+964', 10)">🇮🇶 Irak (+964)</button>
-    <button onclick="selectCountry('+54', 10)">🇦🇷 Argentina (+54)</button>
-    <button onclick="selectCountry('+380', 9)">🇺🇦 Ukraina (+380)</button>
-    <button onclick="selectCountry('+51', 9)">🇵🇪 Peru (+51)</button>
-    <button onclick="selectCountry('+31', 9)">🇳🇱 Belanda (+31)</button>
-    <button onclick="selectCountry('+32', 9)">🇧🇪 Belgia (+32)</button>
-    <button onclick="selectCountry('+41', 9)">🇨🇭 Swiss (+41)</button>
-    <button onclick="selectCountry('+47', 8)">🇳🇴 Norwegia (+47)</button>
-    <button onclick="selectCountry('+46', 9)">🇸🇪 Swedia (+46)</button>
-    <button onclick="selectCountry('+45', 8)">🇩🇰 Denmark (+45)</button>
-    <button onclick="selectCountry('+358', 9)">🇫🇮 Finlandia (+358)</button>
-    <button onclick="selectCountry('+48', 9)">🇵🇱 Polandia (+48)</button>
-    <button onclick="selectCountry('+420', 9)">🇨🇿 Ceko (+420)</button>
-    <button onclick="selectCountry('+421', 9)">🇸🇰 Slovakia (+421)</button>
-    <button onclick="selectCountry('+40', 9)">🇷🇴 Rumania (+40)</button>
-    <button onclick="selectCountry('+30', 9)">🇬🇷 Yunani (+30)</button>
-    <button onclick="selectCountry('+351', 9)">🇵🇹 Portugal (+351)</button>
-    <button onclick="selectCountry('+212', 9)">🇲🇦 Maroko (+212)</button>
-    <button onclick="selectCountry('+972', 9)">🇮🇱 Israel (+972)</button>
-    <button onclick="selectCountry('+962', 9)">🇯🇴 Yordania (+962)</button>
-    <button onclick="selectCountry('+20', 9)">🇪🇬 Mesir (+20)</button>
-  </div>
-
-  <button class="next-btn" onclick="generateNumber()">Lanjut</button>
-
-  <script>
+  <p>Pilih negara dulu, lalu klik <b>Lanjut</b> untuk acak nomor</p>  <div class="toggle-list" id="countryList"></div>
+  <button class="next-btn" onclick="generateNumber()">Lanjut</button>  <script>
     let selectedPrefix = '';
     let numberLength = 10;
+    let operatorPrefixes = {};
+
+    const countries = [
+      { name: "Indonesia", code: "+62", length: 12, ops: ["812", "813", "821", "822"] },
+      { name: "USA", code: "+1", length: 11, ops: ["201", "305", "415"] },
+      { name: "India", code: "+91", length: 10, ops: ["701", "981", "989"] },
+      { name: "Jepang", code: "+81", length: 9, ops: ["70", "80", "90"] },
+      { name: "UK", code: "+44", length: 10, ops: ["7400", "7500"] },
+      { name: "Brazil", code: "+55", length: 11, ops: ["11", "21", "31"] },
+      { name: "Rusia", code: "+7", length: 10, ops: ["912", "913", "916"] },
+      { name: "Prancis", code: "+33", length: 9, ops: ["6", "7"] },
+      { name: "Jerman", code: "+49", length: 10, ops: ["151", "152"] },
+      { name: "China", code: "+86", length: 11, ops: ["131", "132"] },
+      { name: "Korea Selatan", code: "+82", length: 10, ops: ["10", "11"] },
+      { name: "Malaysia", code: "+60", length: 9, ops: ["10", "12"] },
+      { name: "Thailand", code: "+66", length: 9, ops: ["81", "91"] },
+      { name: "Vietnam", code: "+84", length: 9, ops: ["91", "96"] },
+      { name: "Australia", code: "+61", length: 9, ops: ["4"] },
+      { name: "Kanada", code: "+1", length: 11, ops: ["403", "416"] },
+      { name: "Singapura", code: "+65", length: 8, ops: ["8", "9"] },
+      { name: "Arab Saudi", code: "+966", length: 9, ops: ["50", "53"] },
+      { name: "Turki", code: "+90", length: 10, ops: ["530", "531"] },
+      { name: "Pakistan", code: "+92", length: 10, ops: ["300", "301"] },
+      { name: "Bangladesh", code: "+880", length: 10, ops: ["171"] },
+      { name: "Nigeria", code: "+234", length: 10, ops: ["703", "802"] },
+      { name: "Afrika Selatan", code: "+27", length: 9, ops: ["71", "72"] },
+      { name: "Meksiko", code: "+52", length: 10, ops: ["55"] },
+      { name: "Italia", code: "+39", length: 9, ops: ["320", "331"] },
+      { name: "Spanyol", code: "+34", length: 9, ops: ["611"] },
+      { name: "Filipina", code: "+63", length: 10, ops: ["917"] },
+      { name: "UEA", code: "+971", length: 9, ops: ["50", "52"] },
+      { name: "Iran", code: "+98", length: 10, ops: ["912", "933"] },
+      { name: "Irak", code: "+964", length: 10, ops: ["770"] },
+      { name: "Argentina", code: "+54", length: 10, ops: ["11"] },
+      { name: "Ukraina", code: "+380", length: 9, ops: ["50"] },
+      { name: "Peru", code: "+51", length: 9, ops: ["9"] },
+      { name: "Belanda", code: "+31", length: 9, ops: ["6"] },
+      { name: "Belgia", code: "+32", length: 9, ops: ["4"] },
+      { name: "Swiss", code: "+41", length: 9, ops: ["76"] },
+      { name: "Norwegia", code: "+47", length: 8, ops: ["4"] },
+      { name: "Swedia", code: "+46", length: 9, ops: ["7"] },
+      { name: "Denmark", code: "+45", length: 8, ops: ["2"] },
+      { name: "Finlandia", code: "+358", length: 9, ops: ["50"] },
+      { name: "Polandia", code: "+48", length: 9, ops: ["50"] },
+      { name: "Ceko", code: "+420", length: 9, ops: ["602"] },
+      { name: "Slovakia", code: "+421", length: 9, ops: ["904"] },
+      { name: "Rumania", code: "+40", length: 9, ops: ["721"] },
+      { name: "Yunani", code: "+30", length: 9, ops: ["69"] },
+      { name: "Portugal", code: "+351", length: 9, ops: ["91"] },
+      { name: "Maroko", code: "+212", length: 9, ops: ["6"] },
+      { name: "Israel", code: "+972", length: 9, ops: ["52"] },
+      { name: "Yordania", code: "+962", length: 9, ops: ["77"] },
+      { name: "Mesir", code: "+20", length: 9, ops: ["10"] },
+    ];
+
+    countries.forEach(c => {
+      operatorPrefixes[c.code] = c.ops;
+      const btn = document.createElement("button");
+      btn.textContent = `${c.flag || ''} ${c.name} (${c.code})`;
+      btn.onclick = () => selectCountry(c.code, c.length);
+      document.getElementById("countryList").appendChild(btn);
+    });
 
     function selectCountry(prefix, length) {
       selectedPrefix = prefix;
@@ -165,15 +143,16 @@
         return;
       }
 
+      const ops = operatorPrefixes[selectedPrefix] || [""];
+      const operator = ops[Math.floor(Math.random() * ops.length)];
+      const remainingLength = numberLength - operator.length;
       let randomNumber = '';
-      for (let i = 0; i < numberLength; i++) {
+      for (let i = 0; i < remainingLength; i++) {
         randomNumber += Math.floor(Math.random() * 10);
       }
 
-      const fullNumber = selectedPrefix.replace('+', '') + randomNumber;
-      const waLink = `https://wa.me/${fullNumber}`;
-      window.open(waLink, "_blank");
+      const fullNumber = selectedPrefix.replace('+', '') + operator + randomNumber;
+      window.open(`https://wa.me/${fullNumber}`, '_blank');
     }
-  </script>
-</body>
-    </html>
+  </script></body>
+</html>
