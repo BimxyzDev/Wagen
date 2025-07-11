@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>WA Random Chat Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #000;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: cyan;
+      text-shadow: 0 0 8px cyan;
+    }
+    .country-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .country-btn {
+      padding: 8px 12px;
+      background: #111;
+      border: 1px solid cyan;
+      color: cyan;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .country-btn:hover,
+    .country-btn.active {
+      background: cyan;
+      color: black;
+    }
+    .action-btn {
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      background: cyan;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      margin: 10px 0;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .action-btn:hover {
+      background: #00ffff88;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Random WA Chat Tool</h1>
+  <p>Pilih negara dulu, lalu klik <strong>Lanjut</strong> untuk acak nomor</p>
+
+  <div class="country-list" id="countryList">
+    <!-- Tombol negara akan di-generate otomatis -->
+  </div>
+
+  <button class="action-btn" onclick="generateNomor()">Lanjut</button><br>
+  <button class="action-btn" id="chatBtn" style="display:none;" onclick="chatNow()">Chat Sekarang</button>
+
+  <script>
+    const countries = [
+      { name: "🇮🇩 Indonesia", code: "62" },
+      { name: "🇺🇸 USA", code: "1" },
+      { name: "🇮🇳 India", code: "91" },
+      { name: "🇯🇵 Jepang", code: "81" },
+      { name: "🇬🇧 UK", code: "44" },
+      { name: "🇧🇷 Brazil", code: "55" },
+      { name: "🇷🇺 Rusia", code: "7" },
+      { name: "🇫🇷 Prancis", code: "33" },
+      { name: "🇩🇪 Jerman", code: "49" },
+      { name: "🇨🇳 China", code: "86" },
+      { name: "🇰🇷 Korea Selatan", code: "82" },
+      { name: "🇲🇾 Malaysia", code: "60" },
+      { name: "🇹🇭 Thailand", code: "66" },
+      { name: "🇻🇳 Vietnam", code: "84" },
+      { name: "🇦🇺 Australia", code: "61" },
+      { name: "🇨🇦 Kanada", code: "1" },
+      { name: "🇸🇬 Singapura", code: "65" },
+      { name: "🇸🇦 Arab Saudi", code: "966" },
+      { name: "🇹🇷 Turki", code: "90" },
+      { name: "🇵🇰 Pakistan", code: "92" },
+      { name: "🇧🇩 Bangladesh", code: "880" },
+      { name: "🇳🇬 Nigeria", code: "234" },
+      { name: "🇿🇦 Afrika Selatan", code: "27" },
+      { name: "🇲🇽 Meksiko", code: "52" },
+      { name: "🇮🇹 Italia", code: "39" },
+      { name: "🇪🇸 Spanyol", code: "34" },
+      { name: "🇵🇭 Filipina", code: "63" },
+      { name: "🇦🇪 UEA", code: "971" },
+      { name: "🇮🇷 Iran", code: "98" },
+      { name: "🇮🇶 Irak", code: "964" },
+      { name: "🇦🇷 Argentina", code: "54" },
+      { name: "🇺🇦 Ukraina", code: "380" },
+      { name: "🇵🇪 Peru", code: "51" },
+      { name: "🇳🇱 Belanda", code: "31" },
+      { name: "🇧🇪 Belgia", code: "32" },
+      { name: "🇨🇭 Swiss", code: "41" },
+      { name: "🇳🇴 Norwegia", code: "47" },
+      { name: "🇸🇪 Swedia", code: "46" },
+      { name: "🇩🇰 Denmark", code: "45" },
+      { name: "🇫🇮 Finlandia", code: "358" },
+      { name: "🇵🇱 Polandia", code: "48" },
+      { name: "🇨🇿 Ceko", code: "420" },
+      { name: "🇸🇰 Slovakia", code: "421" },
+      { name: "🇷🇴 Rumania", code: "40" },
+      { name: "🇬🇷 Yunani", code: "30" },
+      { name: "🇵🇹 Portugal", code: "351" },
+      { name: "🇲🇦 Maroko", code: "212" },
+      { name: "🇮🇱 Israel", code: "972" },
+      { name: "🇯🇴 Yordania", code: "962" },
+      { name: "🇪🇬 Mesir", code: "20" }
+    ];
+
+    const listDiv = document.getElementById("countryList");
+    let kodeNegara = "";
+    let nomorSekarang = "";
+
+    countries.forEach((country, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = `${country.name} (+${country.code})`;
+      btn.className = "country-btn";
+      btn.onclick = () => selectCountry(btn, country.code);
+      listDiv.appendChild(btn);
+    });
+
+    function selectCountry(btn, code) {
+      document.querySelectorAll(".country-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      kodeNegara = code;
+    }
+
+    function generateNomor() {
+      if (!kodeNegara) {
+        alert("Pilih dulu kode negara ya bro.");
+        return;
+      }
+      const nomorAcak = Math.floor(Math.random() * 9000000000) + 1000000000;
+      nomorSekarang = kodeNegara + nomorAcak;
+      document.getElementById("chatBtn").style.display = "inline-block";
+    }
+
+    function chatNow() {
+      window.open("https://wa.me/" + nomorSekarang, "_blank");
+    }
+  </script>
+
+</body>
+</html>
